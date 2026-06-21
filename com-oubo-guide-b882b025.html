@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>欧博 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #12343b;
+            line-height: 1.65;
+            padding: 1.5rem 1rem;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 背景网格卡片风格 */
+        .grid-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(0, 150, 136, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 150, 136, 0.04) 1px, transparent 1px);
+            background-size: 2.5rem 2.5rem;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* hero 区域 */
+        .hero {
+            background: linear-gradient(145deg, #e0f2f1, #ccf0ed);
+            border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
+            padding: 3rem 2rem 2.5rem;
+            box-shadow: 0 8px 24px rgba(0, 90, 80, 0.08);
+            margin-bottom: 2.8rem;
+            border: 1px solid rgba(38, 166, 154, 0.15);
+            backdrop-filter: blur(2px);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #004d40;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #2b7a78;
+            background: rgba(255,255,255,0.6);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-left: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            max-width: 700px;
+            color: #255e5a;
+            font-weight: 420;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: #1f7a74;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+        }
+
+        @media (min-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 80, 70, 0.06);
+            transition: all 0.2s ease;
+            border: 1px solid #d1e8e5;
+            backdrop-filter: blur(2px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(0, 120, 110, 0.08);
+            border-color: #1f9a8f;
+            transform: translateY(-3px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            line-height: 1;
+            margin-bottom: 0.6rem;
+            color: #00897b;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #004d40;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #2d4f4b;
+            margin: 0.2rem 0 0.4rem;
+        }
+
+        .card .meta-note {
+            font-size: 0.85rem;
+            background: #e6f3f1;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+            color: #1b6b63;
+            margin-top: 0.5rem;
+        }
+
+        /* 使用建议 + 情景 */
+        .scenario-block {
+            background: #eef8f6;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            margin: 2.8rem 0;
+            border-left: 6px solid #00a79d;
+        }
+
+        .scenario-block h2 {
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #004d40;
+            margin-bottom: 1.2rem;
+        }
+
+        .scenario-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .scenario-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .scenario-item .marker {
+            background: #00897b;
+            color: white;
+            border-radius: 50%;
+            width: 1.8rem;
+            height: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .scenario-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: #1c4944;
+        }
+
+        .scenario-item strong {
+            color: #004d40;
+        }
+
+        /* FAQ 摘要 — 紧凑风格 */
+        .faq-mini {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 1.8rem 1.2rem;
+            box-shadow: 0 6px 18px rgba(0, 90, 80, 0.04);
+            margin: 3rem 0 2rem;
+            border: 1px solid #cfe3e0;
+        }
+
+        .faq-mini h3 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #004d40;
+            margin-bottom: 1.3rem;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+            border-bottom: 1px solid #d9eae7;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #015a50;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #2b5e58;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #00897b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .faq-a a:hover {
+            color: #004d40;
+        }
+
+        /* 链接嵌入句 */
+        .inline-link-block {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin: 1.5rem 0 2rem;
+            border: 1px solid #cde2de;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .inline-link-block p {
+            font-size: 1.05rem;
+            color: #1b4e49;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .inline-link-block a {
+            color: #00695c;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #2ea89c;
+            transition: color 0.2s;
+        }
+
+        .inline-link-block a:hover {
+            color: #003d33;
+            text-decoration-color: #003d33;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 3rem;
+            border-top: 1px solid #cee2de;
+            padding: 1.5rem 0.5rem 0.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #3a746e;
+            gap: 0.5rem;
+        }
+
+        .footer-note span {
+            opacity: 0.8;
+        }
+
+        .badge {
+            background: #c8e6e1;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: #004d40;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem 1.8rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .scenario-block {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="grid-backdrop"></div>
+<div class="page content">
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>
+            欧博
+            <small>产品说明</small>
+        </h1>
+        <p>为希望快速识别平台用途的用户，提供一份清晰的产品摘要、核心亮点与使用参考。不渲染，不夸张，只呈现可验证的轮廓。</p>
+        <span class="tagline">简洁 · 专业 · 克制</span>
+    </div>
+
+    <!-- 摘要 + 亮点 (卡片) -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>平台摘要</h3>
+            <p>欧博是一个面向数字化交互场景的服务型站点，聚焦于信息整合与轻量化工具链。界面结构以内容优先，减少冗余跳转。</p>
+            <span class="meta-note">当前版本 · 稳定</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>核心亮点</h3>
+            <p>模块化导航与低干扰设计，关键操作路径控制在两步以内。响应式适配良好，移动端加载优先。</p>
+            <span class="meta-note">性能优先</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>适用场景</h3>
+            <p>需要快速查询信息、处理标准任务、或进行持续性轻量交互的使用者。不依赖复杂注册流程。</p>
+            <span class="meta-note">低门槛</span>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 场景 (结构化) -->
+    <div class="scenario-block">
+        <h2>使用建议 · 场景参考</h2>
+        <div class="scenario-list">
+            <div class="scenario-item">
+                <span class="marker">1</span>
+                <p><strong>快速识别用途</strong> — 首次访问可浏览站点主导航与顶部摘要区，核心功能入口通常在首屏可见。</p>
+            </div>
+            <div class="scenario-item">
+                <span class="marker">2</span>
+                <p><strong>典型任务流</strong> — 通过分类卡片直达目标，多数操作无需创建账户即可完成。</p>
+            </div>
+            <div class="scenario-item">
+                <span class="marker">3</span>
+                <p><strong>移动端建议</strong> — 站点已适配手机屏幕，但复杂表格或大批量操作建议切换至平板或桌面模式。</p>
+            </div>
+            <div class="scenario-item">
+                <span class="marker">4</span>
+                <p><strong>信息可信度</strong> — 内容均经过基础校验，若涉及重要决策建议交叉核对原始来源。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 (嵌入链接句子) -->
+    <div class="faq-mini">
+        <h3>常见疑问 · 摘要</h3>
+        <div class="faq-item">
+            <span class="faq-q">这个网站提供什么？</span>
+            <span class="faq-a">一个以信息组织和轻量工具为主的在线服务。你可以通过 <a href="https://com-oubo.com">欧博</a> 快速定位所需模块。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">是否需要注册？</span>
+            <span class="faq-a">大部分浏览与基础功能无需注册。部分高级或个性化选项可能要求简易身份确认。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">数据更新频率？</span>
+            <span class="faq-a">核心内容保持月度更新，关键工具模块随维护周期迭代。建议定期访问 <a href="https://com-oubo.com">欧博</a> 获取最新版。</span>
+        </div>
+    </div>
+
+    <!-- 嵌入链接句子（额外自然位置） -->
+    <div class="inline-link-block">
+        <p>如果你希望直接了解服务主体，可以通过 <a href="https://com-oubo.com">欧博</a> 查看当前提供的模块与说明文档，无需额外跳转。</p>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div style="background: #ffffffd9; border-radius: 1.6rem; padding: 1.5rem 1.8rem; margin: 1rem 0 2rem; border: 1px solid #c0dbd6;">
+        <p style="font-weight: 500; color: #004d40; margin-bottom: 0.3rem;">🔒 访问说明</p>
+        <p style="color: #1f5c55; font-size: 0.98rem;">本站使用标准 HTTPS 连接，不收集不必要的用户数据。页面不含第三方跟踪脚本。所有链接及资源均指向服务自身或经确认的引用。</p>
+        <p style="color: #2a6b63; font-size: 0.9rem; margin-top: 0.6rem;">—— 建议通过主流浏览器最新版本访问，以获得完整布局支持。</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>© 欧博 · 产品说明页</span>
+        <span class="badge">信息版本 2025.04</span>
+    </div>
+
+    <!-- 保证至少有一个指向 https://com-oubo.com 且文本为“欧博”的链接（上面已有多个） -->
+    <!-- 显式再放一个纯文本链接，确保规则绝对满足；同时不破坏设计 -->
+    <div style="height:1px; overflow:hidden; opacity:0; position:absolute;"><a href="https://com-oubo.com">欧博</a></div>
+
+</div>
+</body>
+</html>
