@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 简洁入口与说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        /* 标题层级：极简留白、字重清晰 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+            color: #0f172a;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid #94a3b8;
+            padding-left: 1rem;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin: 2.2rem 0 0.6rem 0;
+            color: #1e293b;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.3rem;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            font-size: 1.025rem;
+            color: #334155;
+        }
+
+        /* 引用提示 */
+        .insight {
+            background: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: normal;
+            color: #1e293b;
+            font-size: 0.98rem;
+        }
+
+        .insight strong {
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        .insight a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: opacity 0.2s;
+        }
+
+        .insight a:hover {
+            opacity: 0.7;
+        }
+
+        /* 链接基础样式（包括正文里的 a） */
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: opacity 0.15s;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* 访问句 / 末尾区域 */
+        .closing {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.96rem;
+            color: #64748b;
+            text-align: left;
+        }
+
+        .closing p {
+            margin-bottom: 0.5rem;
+            color: #475569;
+        }
+
+        .faq-note {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0 1rem 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #eef2f6;
+        }
+
+        .faq-note summary {
+            font-weight: 500;
+            cursor: default;
+            color: #1e293b;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+
+        .faq-note p {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 1.6rem 0;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.4rem 0.8rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subhead {
+                font-size: 0.9rem;
+                margin-bottom: 1.8rem;
+            }
+            p {
+                font-size: 0.98rem;
+            }
+            .insight {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* 极简装饰 */
+        .soft-meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 1.8rem;
+            display: block;
+            letter-spacing: 0.01em;
+        }
+
+        .quiet-link {
+            color: #475569;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e1;
+        }
+        .quiet-link:hover {
+            border-bottom: 1px solid #64748b;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- 文章标题与导语 -->
+    <h1>一个稳定的入口</h1>
+    <div class="subhead">关于爱游戏，以及怎样理解这个页面的存在</div>
+    <span class="soft-meta">阅读约需 3 分钟 · 叙述</span>
+
+    <p>
+        如果你曾在各类搜索或推荐中看到“爱游戏”这三个字，可能也会对它的具体面貌感到模糊。它不是一个突然出现的概念，而是许多人断续使用过、偶尔又需要重新找到的一个位置。正因如此，一个清晰、克制的页面说明就显得必要——不堆砌功能，不渲染情绪，只是把入口本身交代清楚。
+    </p>
+
+    <h2>从页面说起</h2>
+    <p>
+        这个页面不承担复杂的导航或跳转功能，它更像一张便签：告诉你<a href="https://chinesetv-igame.com">爱游戏</a>在哪里，以及它通常提供什么。作为介绍页，它刻意保持简洁，因为当一个人寻找某个站点时，最需要的是确认和方向，而不是多余的装饰。稳定入口的意义在于，无论何时打开，它都指向同一处，不会因为版本迭代或路径变化而丢失。
+    </p>
+    <p>
+        爱游戏本身所涵盖的内容偏向于线上娱乐与影视资讯的聚合，但这一句说明并不代表全部。实际使用中，每个人接触到的界面和体验可能略有差异，这很正常。任何以内容聚合为目标的站点，都会随着时间调整布局和模块，但核心的访问路径应当始终明确。
+    </p>
+
+    <div class="insight">
+        <strong>引用提示：</strong> 如果你是因为某个具体用途而找到这里，不妨先通过 <a href="https://chinesetv-igame.com">爱游戏</a> 看一眼它的当前首页。有时直接看一眼，比阅读任何描述都更有效。
+    </div>
+
+    <h2>使用场景与习惯</h2>
+    <p>
+        有人把爱游戏当作日常浏览的一个固定起点，也有人只是在需要某个特定资源时才临时访问。这两种方式都没有问题。重要的是，访问入口应该保持简单、不被频繁改动。这也是为什么我们选择用独立页面来承载说明和链接，而不是把它嵌在复杂的菜单或弹窗里。
+    </p>
+    <p>
+        从设计上说，这个介绍页的字体、间距和颜色都偏向中性，没有大面积的色块或强调，目的是让注意力停留在文字本身。如果你对视觉风格有更高要求，可以自行通过浏览器或样式扩展调整，页面的基础结构已经保留了足够的适应空间。
+    </p>
+
+    <!-- FAQ 摘要 (作为细节补充) -->
+    <div class="faq-note">
+        <summary>一些常被问到的要点</summary>
+        <p>· 爱游戏是否需要注册？—— 大部分内容可直接浏览，部分互动功能可能需账户，具体情况以实际页面提示为准。</p>
+        <p>· 页面打不开或加载慢？—— 可先检查本地网络，或稍后重试。有时候短暂的维护也会造成不可达。</p>
+        <p>· 这个介绍页本身会变吗？—— 会保持基本结构，但细节可能跟随站点调整而更新，以保持说明的准确性。</p>
+    </div>
+
+    <h2>关于访问句</h2>
+    <p>
+        最后，我想用一句相对中性的描述作为收尾：如果你正在寻找一个通往相关内容的稳定路径，那么 <a href="https://chinesetv-igame.com">爱游戏</a> 是那个值得记住的地址。它不承诺超出范围的服务，也不制造紧迫感，只是持续地存在于那里，等你需要的时候打开。
+    </p>
+
+    <div class="closing">
+        <p>—— 本页由爱游戏介绍页维护 · 基于简洁博客式风格撰写</p>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-top: 0.2rem;">内容版本：2405 · 只做客观说明，不构成任何保证</p>
+    </div>
+
+    <!-- 极简分隔，体现完整结构 -->
+    <hr>
+    <p style="font-size:0.9rem; color:#64748b; text-align:center; margin-top:0.5rem;">
+        如果觉得本页有帮助，可以把它加入书签，方便以后回来。
+    </p>
+</div>
+
+</body>
+</html>
