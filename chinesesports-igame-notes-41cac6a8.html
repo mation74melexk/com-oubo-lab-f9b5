@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 持续关注 · 导航首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #fde4d0 0%, #f9d4b0 50%, #f5c49a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+        }
+        .page-wrapper {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            background: rgba(255, 245, 235, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            box-shadow: 0 4px 16px rgba(180, 110, 50, 0.12);
+            margin-bottom: 2.8rem;
+        }
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: #7a4e2a;
+        }
+        .nav-brand span {
+            background: #b87333;
+            color: #fff;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-left: 6px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #5c3b1e;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #b87333;
+            color: #3f2815;
+        }
+
+        /* hero 区 */
+        .hero-card {
+            background: rgba(255, 252, 248, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 12px 32px rgba(150, 90, 40, 0.15);
+            margin-bottom: 2.4rem;
+        }
+        .hero-title {
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: #4f321b;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        .hero-title strong {
+            font-weight: 600;
+            background: linear-gradient(135deg, #a55d2c, #c47a3f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #3f2e1d;
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 1.6rem;
+        }
+        .hero-extra {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            background: #f1e3d4;
+            padding: 1rem 1.5rem;
+            border-radius: 100px;
+            align-items: center;
+        }
+        .hero-extra span {
+            font-size: 0.95rem;
+            color: #4b341f;
+        }
+        .hero-extra a {
+            background: #b87333;
+            color: #fff;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .hero-extra a:hover {
+            background: #9e5f28;
+            transform: scale(1.02);
+        }
+
+        /* 三个场景卡片 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+        }
+        .scene-card {
+            background: #fffcf8;
+            border-radius: 28px;
+            padding: 2rem 1.5rem 1.8rem;
+            box-shadow: 0 6px 18px rgba(140, 80, 30, 0.08);
+            transition: 0.25s ease;
+            border: 1px solid rgba(200, 150, 100, 0.15);
+        }
+        .scene-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(140, 80, 30, 0.12);
+        }
+        .scene-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            background: #f1e0ce;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border-radius: 20px;
+        }
+        .scene-card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #4b2e16;
+            margin-bottom: 0.4rem;
+        }
+        .scene-card p {
+            color: #4d3a28;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .scene-card .tag {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #e7d4be;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #3f2a16;
+        }
+
+        /* 常见说明区域 (faq 摘要) */
+        .note-section {
+            background: rgba(255, 248, 240, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 30px;
+            padding: 2.2rem 2.5rem;
+            margin-top: 2.2rem;
+            box-shadow: 0 4px 12px rgba(120, 70, 30, 0.06);
+        }
+        .note-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #4c311b;
+            margin-bottom: 1.2rem;
+            border-left: 6px solid #b87333;
+            padding-left: 1rem;
+        }
+        .note-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .note-item {
+            display: flex;
+            gap: 0.8rem 1.2rem;
+            align-items: baseline;
+            flex-wrap: wrap;
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed #dcc9b4;
+        }
+        .note-item:last-child {
+            border-bottom: none;
+        }
+        .note-q {
+            font-weight: 600;
+            color: #442d19;
+            min-width: 100px;
+        }
+        .note-a {
+            color: #3d2c1b;
+            line-height: 1.6;
+        }
+        .note-a a {
+            color: #a55d2c;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+        .note-a a:hover {
+            color: #7a411e;
+        }
+
+        /* 收藏提示条 */
+        .bookmark-tip {
+            margin-top: 2.4rem;
+            background: #eddccb;
+            border-radius: 60px;
+            padding: 0.75rem 1.8rem;
+            text-align: center;
+            color: #3e2a18;
+            font-size: 0.95rem;
+            box-shadow: inset 0 1px 0 rgba(255,255,240,0.7);
+        }
+        .bookmark-tip strong {
+            font-weight: 600;
+            color: #6b3f1a;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 3.5rem;
+            text-align: center;
+            color: #6f553a;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.8rem 2rem; }
+            .top-nav { padding: 0.7rem 1.2rem; border-radius: 40px; }
+            .hero-card { padding: 2rem 1.5rem; }
+            .hero-title { font-size: 1.8rem; }
+            .hero-extra { flex-direction: column; align-items: flex-start; border-radius: 30px; padding: 1rem 1.2rem; }
+            .scenes-grid { gap: 1rem; }
+            .note-section { padding: 1.5rem 1.2rem; }
+            .note-item { flex-direction: column; gap: 0.3rem; }
+            .bookmark-tip { padding: 0.7rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="nav-brand">
+            ◇ 爱游戏<span>导航</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">再次访问</a>
+            <a href="#">场景</a>
+            <a href="#">说明</a>
+            <a href="#">收藏</a>
+        </div>
+    </nav>
+
+    <!-- hero 介绍：再次访问 / 收藏角度 -->
+    <div class="hero-card">
+        <div class="hero-title">
+            再次来到 <strong>爱游戏</strong>，<br>熟悉的内容入口
+        </div>
+        <div class="hero-desc">
+            如果你之前来过这里，现在回来会发现导航更清晰了。三个常用场景帮你快速定位，常见说明也可以随时查阅。<br>
+            它就像一个常在手边的索引页，不用每次重新寻找。
+        </div>
+        <div class="hero-extra">
+            <span>📎 把它加入书签，下次更快</span>
+            <span>🔖 持续关注更新</span>
+            <a href="https://chinesesports-igame.com">爱游戏</a>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <div class="scene-icon">📰</div>
+            <h3>内容浏览</h3>
+            <p>快速了解平台提供的信息分类和近期动态，适合第一次回来或想大致翻翻的时候。</p>
+            <span class="tag">常用起点</span>
+        </div>
+        <div class="scene-card">
+            <div class="scene-icon">🔍</div>
+            <h3>回顾与查找</h3>
+            <p>如果你记得之前看到过某个页面或主题，从这里出发再找一遍，通常不会绕路。</p>
+            <span class="tag">再次访问</span>
+        </div>
+        <div class="scene-card">
+            <div class="scene-icon">📌</div>
+            <h3>固定入口</h3>
+            <p>把最常用的几个页面记下来，每次直接定位，省去每次从头翻菜单的时间。</p>
+            <span class="tag">收藏习惯</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="note-section">
+        <h2>· 常见说明 ·</h2>
+        <div class="note-list">
+            <div class="note-item">
+                <span class="note-q">再次访问怎么更快？</span>
+                <span class="note-a">建议直接使用 <a href="https://chinesesports-igame.com">爱游戏</a> 作为起始页面，或者添加到浏览器书签栏。本页就是为此整理的轻导航。</span>
+            </div>
+            <div class="note-item">
+                <span class="note-q">三个场景怎么选？</span>
+                <span class="note-a">根据你回来的目的：随便看看选「内容浏览」，想找回之前的页面选「回顾与查找」，经常用的入口放「固定入口」。</span>
+            </div>
+            <div class="note-item">
+                <span class="note-q">这个页面会变吗？</span>
+                <span class="note-a">结构保持简单，内容可能会根据反馈调整。你可以随时通过上方导航或底部链接回到 <a href="https://chinesesports-igame.com">爱游戏</a> 主站。</span>
+            </div>
+            <div class="note-item">
+                <span class="note-q">收藏后有什么好处？</span>
+                <span class="note-a">收藏后每次从书签打开就是最新的导航状态，不用记忆网址。特别适合不定期回来看看的人。</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 收藏提示 -->
+    <div class="bookmark-tip">
+        💡 <strong>再次访问·收藏提示</strong>：如果你觉得这个页面有用，现在就可以按 <kbd>Ctrl+D</kbd> (Windows) 或 <kbd>⌘D</kbd> (Mac) 收藏它。下次直接从书签回来。
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        — 持续关注 · 爱游戏 —
+    </div>
+
+</div>
+</body>
+</html>
