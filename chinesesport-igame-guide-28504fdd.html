@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 信息索引与资料整理站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce4c8 0%, #fbdeb4 40%, #f7d9a6 80%, #f3d099 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #3d2c1b;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 主视觉卡片 —— 柔和突出 */
+        .hero-card {
+            background: #fffcf7;
+            border-radius: 36px 36px 28px 28px;
+            padding: 2.8rem 2.4rem 2.4rem;
+            margin-bottom: 2.4rem;
+            box-shadow: 0 18px 40px -12px rgba(140, 80, 30, 0.18), 0 6px 14px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.25s ease;
+            text-align: center;
+        }
+
+        .hero-card:hover {
+            box-shadow: 0 24px 48px -14px rgba(120, 65, 20, 0.22);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #5f3e24;
+            background: linear-gradient(135deg, #955f3a, #b47a4c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: #6b4e35;
+            max-width: 640px;
+            margin: 0 auto 0.6rem;
+            background: #f7efe6;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-desc {
+            margin-top: 1.4rem;
+            font-size: 1.05rem;
+            color: #4d3823;
+            background: #fcf6ed;
+            padding: 1.2rem 1.8rem;
+            border-radius: 70px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #ecdccc;
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
+            margin: 2rem 0 2.4rem;
+        }
+
+        .card {
+            background: #fffffffb;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 8px 20px -8px rgba(110, 70, 30, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #f6ede2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px -10px rgba(100, 60, 20, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 530;
+            letter-spacing: -0.01em;
+            color: #754f2e;
+            border-left: 4px solid #cc9f74;
+            padding-left: 0.8rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .card p, .card ul {
+            color: #412f1e;
+            font-size: 0.97rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .card li {
+            padding: 0.35rem 0 0.35rem 1.6rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "·";
+            font-weight: bold;
+            position: absolute;
+            left: 0.3rem;
+            color: #b8845a;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.7rem;
+            margin-top: 0.7rem;
+        }
+
+        .tag {
+            background: #f3e7db;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #5d3d25;
+        }
+
+        /* 自然链接段落卡片 */
+        .link-paragraph-card {
+            background: #fffcf7;
+            border-radius: 28px;
+            padding: 1.8rem 2.2rem 2rem;
+            margin: 1.8rem 0 2.2rem;
+            box-shadow: 0 6px 16px rgba(90, 55, 20, 0.04);
+            border: 1px solid #f0e3d4;
+        }
+
+        .link-paragraph-card p {
+            margin-bottom: 0.9rem;
+            font-size: 1.02rem;
+        }
+
+        .link-paragraph-card a {
+            color: #7a5838;
+            background: #f3e5d6;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.25s;
+            border-bottom: none;
+            display: inline-block;
+            line-height: 1.5;
+        }
+
+        .link-paragraph-card a:hover {
+            background: #dbbd9e;
+            color: #2f1e0f;
+            transform: scale(1.02);
+        }
+
+        /* FAQ 摘要 — 极简折叠感 */
+        .faq-mini {
+            background: #fffbf5;
+            border-radius: 24px;
+            padding: 1.6rem 2rem 0.2rem;
+            margin: 1rem 0 2rem;
+            border: 1px solid #eadbc9;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #5f3b20;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.98rem;
+            border-bottom: 1px dashed #e1cdb6;
+            padding-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            color: #4a3522;
+            padding-left: 0.6rem;
+            font-size: 0.92rem;
+        }
+
+        .faq-a a {
+            color: #7a5838;
+            text-decoration: underline wavy #c7a781 1px;
+            text-underline-offset: 4px;
+        }
+
+        .footnote {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.88rem;
+            color: #6f543c;
+            border-top: 1px solid #eedbc8;
+            padding-top: 1.8rem;
+            opacity: 0.8;
+        }
+
+        /* 按钮感链接（用于自然嵌入） */
+        .btn-link {
+            background: #f2e2d0;
+            padding: 0.2rem 1.1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #432f1b;
+            font-weight: 480;
+            display: inline-block;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 4px rgba(100, 60, 25, 0.04);
+        }
+
+        .btn-link:hover {
+            background: #e3ccb3;
+            box-shadow: 0 4px 12px rgba(140, 85, 30, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-card {
+                padding: 1.6rem 1.2rem;
+            }
+            .hero-desc {
+                padding: 0.8rem 1rem;
+                border-radius: 40px;
+            }
+            .card-grid {
+                gap: 1rem;
+            }
+            .link-paragraph-card {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <!-- 主视觉区域 -->
+        <div class="hero-card">
+            <div class="hero-title">信息索引 · 爱游戏</div>
+            <span class="hero-sub">资料归类 · 温和导览</span>
+            <div class="hero-desc">
+                从赛事档案到社区笔记，这里是一份围绕「爱游戏」展开的轻整理页。
+                不以推广为目的，只希望让感兴趣的朋友更顺畅地触及值得关注的内容。
+            </div>
+        </div>
+
+        <!-- 用途卡片 + 适合人群 混合网格 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>📋 用途速览</h3>
+                <p>该站点收纳了多种运动项目的基础资料、活动纪要以及文化随笔。你可以把它当作一个温和的索引台：</p>
+                <ul>
+                    <li>项目规则与演变笔记</li>
+                    <li>赛事时间线与冷门趣闻</li>
+                    <li>民间俱乐部与交流活动记录</li>
+                    <li>器材、场地与安全提示整理</li>
+                </ul>
+                <div class="tag-list">
+                    <span class="tag">资料向</span>
+                    <span class="tag">非官方</span>
+                    <span class="tag">索引式</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🧑‍🤝‍🧑 适合这样的你</h3>
+                <p>无论你是刚开始接触某项运动，还是希望快速查找一项活动背景，都可以在这里获得平实的线索：</p>
+                <ul>
+                    <li>运动爱好者 &amp; 入门探索者</li>
+                    <li>活动组织者 &amp; 兴趣小组资料员</li>
+                    <li>好奇传统文化与当代运动结合的人</li>
+                    <li>只想安安静静浏览、不被打扰的读者</li>
+                </ul>
+                <div style="margin-top: 0.6rem; font-size: 0.9rem; background: #f4ede5; padding: 0.3rem 0.8rem; border-radius: 40px; display: inline-block;">氛围：低音量 · 不推送</div>
+            </div>
+        </div>
+
+        <!-- 自然链接段落卡片 (嵌入爱游戏) -->
+        <div class="link-paragraph-card">
+            <p>在日常的资料收集中，我们发现很多朋友需要一个平静的起点，而不是被信息流裹挟。因此这个页面被设计成一张简单的导读牌——如果你愿意，可以随时去 <a href="https://chinesesport-igame.com" class="btn-link">爱游戏</a> 浏览那些经过筛选的运动相关内容。那里没有弹窗与排行榜，只有朴素的文字和整理好的条目。</p>
+            <p>另外，站点里也保留了一份关于传统器械与改良规则的对照表，适合课程设计或爱好者考据。无论你是随手翻翻还是做深度查阅，都希望它能带来一点踏实感。</p>
+            <p style="margin-bottom: 0.2rem;">—— 所有内容均由志愿参与者共同维护，更新节奏很慢，但每一条都经过思考。</p>
+        </div>
+
+        <!-- FAQ 摘要卡片（轻量级） -->
+        <div class="faq-mini">
+            <div class="faq-item">
+                <span class="faq-q">❓ 这个页面和主站的关系是？</span>
+                <span class="faq-a">它是一份独立的前端介绍页，帮助新访客快速了解 <a href="https://chinesesport-igame.com">爱游戏</a> 的内容气质与资料类型，不涉及用户数据收集。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">❓ 内容更新频率如何？</span>
+                <span class="faq-a">不定期，通常与季节赛事或活动整理同步。没有邮件推送，也没有强制关注入口。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">❓ 我可以参与资料整理吗？</span>
+                <span class="faq-a">目前站点以个人整理为主，未来或许会开放协作入口，欢迎保持留意。</span>
+            </div>
+        </div>
+
+        <!-- 底部静默提示 -->
+        <div class="footnote">
+            ◇ 温和索引 · 不打扰 · 不夸大 <span style="margin:0 0.6rem;">|</span> 内容仅供参考
+        </div>
+    </div>
+</body>
+</html>
